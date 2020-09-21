@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { removeTodo, markTodoAsCompleted } from '../../actions';
+// import { displayAlert } from '../../thunks';
 
 import TodoListItem from '../TodoListItem/TodoListItem';
 import NewTodoForm from '../NewTodoForm/NewTodoForm';
@@ -28,6 +29,8 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   onRemovePressed: (text) => dispatch(removeTodo(text)),
   onCompletedPressed: (text) => dispatch(markTodoAsCompleted(text)),
+  // THUNKS
+  // onDisplayAlertClicked: () => dispatch(displayAlert()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(TodoList);
