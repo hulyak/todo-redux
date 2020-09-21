@@ -3,6 +3,8 @@ import {
   loadTodosSuccess,
   loadTodosInProgress,
   createTodo,
+  removeTodo,
+  markTodoAsCompleted,
 } from './actions';
 
 export const loadTodos = () => async (dispatch, getState) => {
@@ -16,10 +18,6 @@ export const loadTodos = () => async (dispatch, getState) => {
     dispatch(loadTodosFailure);
     dispatch(displayAlert(err));
   }
-};
-
-export const displayAlert = (text) => () => {
-  alert(text);
 };
 
 // save the new todos when the browser closes
@@ -38,4 +36,36 @@ export const addTodoRequest = (text) => async (dispatch) => {
   } catch (error) {
     dispatch(displayAlert(error));
   }
+};
+
+// remove the todos from server with a delete request based on todo id
+export const removeTodoRequest = (id) => async (dispatch) => {
+  try {
+    const response = await fetch(`http://localhost:8080/todos/${id}`, {
+      method: 'delete',
+    });
+    const removedTodo = await response.json();
+    dispatch(removeTodo(removedTodo));
+  } catch (e) {
+    dispatch(displayAlert(e));
+  }
+};
+
+export const markTodoRequest = (id) => async (dispatch) => {
+  try {
+    const response = await fetch(
+      `http://localhost:8080/todos/${id}/completed`,
+      {
+        method: 'post',
+      }
+    );
+    const updatedTodo = await response.json();
+    dispatch(markTodoAsCompleted(updatedTodo));
+  } catch (e) {
+    dispatch(displayAlert(e));
+  }
+};
+
+export const displayAlert = (text) => () => {
+  alert(text);
 };

@@ -1,7 +1,7 @@
 import {
   CREATE_TODO,
-  MARK_TODO_AS_COMPLETED,
   REMOVE_TODO,
+  MARK_TODO_AS_COMPLETED,
   LOAD_TODOS_IN_PROGRESS,
   LOAD_TODOS_SUCCESS,
   LOAD_TODOS_FAILURE,
@@ -22,15 +22,16 @@ export const todos = (state = [], action) => {
     }
 
     case REMOVE_TODO: {
-      const { text } = payload;
-      return state.filter((todo) => todo.text !== text);
+      const { todo: todoToRemove } = payload;
+      return state.filter((todo) => todo.id !== todoToRemove.id);
     }
 
     case MARK_TODO_AS_COMPLETED: {
-      const { text } = payload;
+      const { todo: updatedTodo } = payload;
       return state.map((todo) => {
-        if (todo.text === text) {
-          return { ...todo, isCompleted: true };
+        if (todo.id === updatedTodo.id) {
+          // return { ...todo, isCompleted: true };
+          return updatedTodo;
         }
         return todo;
       });

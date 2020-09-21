@@ -3,7 +3,7 @@ import cors from 'cors';
 import bodyParser from 'body-parser';
 import uuid from 'uuid';
 
-const fakeTodos = [
+var fakeTodos = [
   {
     id: 'ae06181d-92c2-4fed-a29d-fb53a6301eb9',
     text: 'Learn about React Ecosystems',
