@@ -7,16 +7,16 @@ import {
 export const loadTodos = () => async (dispatch, getState) => {
   try {
     dispatch(loadTodosInProgress());
-    const response = await fetch('http://localhost:8080/todos');
+    const response = await fetch('http://localhost:8080/todos-delay');
     const todos = await response.json();
 
     dispatch(loadTodosSuccess(todos));
   } catch (err) {
     dispatch(loadTodosFailure);
-    dispatch(displayAlert(e));
+    dispatch(displayAlert(err));
   }
 };
 
-export const displayAlert = () => () => {
+export const displayAlert = (text) => () => {
   alert(text);
 };
