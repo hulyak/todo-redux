@@ -19,6 +19,7 @@ const TodoList = ({
 }) => {
   useEffect(() => {
     startLoadingTodos();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const loadingMessage = <div>Loading TODOS ...</div>;
