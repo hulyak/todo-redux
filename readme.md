@@ -19,14 +19,12 @@ Redux takes care of managing and modifying the state of the application for us, 
 - Download / Clone this repository
   
 ```
-// cd into the todo folder and Install all dependencies 
 npm install
 
 // start the app
 npm start
 
 // start the backend
-
 cd server
 npm start 
 ``` 
