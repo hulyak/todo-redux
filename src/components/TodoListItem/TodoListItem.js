@@ -8,6 +8,10 @@ const TodoItemContainer = styled.div`
   padding: 16px;
   position: relative;
   box-shadow: 0 4px 8px grey;
+`;
+
+// extend styled component, inherit from TodoItemContainer
+const TodoItemContainerWithWarning = styled(TodoItemContainer)`
   border-bottom: ${(props) =>
     new Date(props.createdAt) > new Date(Date.now() - 8640000 * 5)
       ? 'none'
@@ -19,46 +23,50 @@ const ButtonsContainer = styled.div`
   right: 12px;
   bottom: 12px;
 `;
-const CompletedButton = styled.button`
+
+const Button = styled.button`
   font-size: 16px;
   padding: 8px;
   border: none;
   border-radius: 8px;
   outline: none;
   cursor: pointer;
+`;
+
+const CompletedButton = styled(Button)`
   display: inline-block;
   background-color: #22ee22;
 `;
 
-const RemoveButton = styled.div`
-  font-size: 16px;
-  padding: 8px;
-  border: none;
-  border-radius: 8px;
-  outline: none;
-  cursor: pointer;
+const RemoveButton = styled(Button)`
   display: inline-block;
   background-color: #ee2222;
   margin-left: 8px;
 `;
 
-const TodoListItem = ({ todo, onRemovePressed, onCompletedPressed }) => (
-  // pass prop to styled component
-  //  older todos with a red border-bottom
-  <TodoItemContainer createdAt={todo.createdAt}>
-    <h3>{todo.text}</h3>
-    <p>Created at :&nbsp; {new Date(todo.createdAt).toLocaleDateString()}</p>
-    <ButtonsContainer>
-      {todo.isCompleted ? null : (
-        <CompletedButton onClick={() => onCompletedPressed(todo.id)}>
-          Mark As Completed
-        </CompletedButton>
-      )}
-      <RemoveButton onClick={() => onRemovePressed(todo.id)}>
-        Remove
-      </RemoveButton>
-    </ButtonsContainer>
-  </TodoItemContainer>
-);
+const TodoListItem = ({ todo, onRemovePressed, onCompletedPressed }) => {
+  // only apply border rule to incomplete todos
+  const Container = todo.isCompleted
+    ? TodoItemContainer
+    : TodoItemContainerWithWarning;
+  return (
+    // pass prop to styled component
+    //  older todos with a red border-bottom
+    <Container createdAt={todo.createdAt}>
+      <h3>{todo.text}</h3>
+      <p>Created at :&nbsp; {new Date(todo.createdAt).toLocaleDateString()}</p>
+      <ButtonsContainer>
+        {todo.isCompleted ? null : (
+          <CompletedButton onClick={() => onCompletedPressed(todo.id)}>
+            Mark As Completed
+          </CompletedButton>
+        )}
+        <RemoveButton onClick={() => onRemovePressed(todo.id)}>
+          Remove
+        </RemoveButton>
+      </ButtonsContainer>
+    </Container>
+  );
+};
 
 export default TodoListItem;
