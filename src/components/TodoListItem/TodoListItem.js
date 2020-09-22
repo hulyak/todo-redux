@@ -8,7 +8,12 @@ const TodoItemContainer = styled.div`
   padding: 16px;
   position: relative;
   box-shadow: 0 4px 8px grey;
+  border-bottom: ${(props) =>
+    new Date(props.createdAt) > new Date(Date.now() - 8640000 * 5)
+      ? 'none'
+      : '2px solid red'};
 `;
+
 const ButtonsContainer = styled.div`
   position: absolute;
   right: 12px;
@@ -38,8 +43,11 @@ const RemoveButton = styled.div`
 `;
 
 const TodoListItem = ({ todo, onRemovePressed, onCompletedPressed }) => (
-  <TodoItemContainer>
+  // pass prop to styled component
+  //  older todos with a red border-bottom
+  <TodoItemContainer createdAt={todo.createdAt}>
     <h3>{todo.text}</h3>
+    <p>Created at :&nbsp; {new Date(todo.createdAt).toLocaleDateString()}</p>
     <ButtonsContainer>
       {todo.isCompleted ? null : (
         <CompletedButton onClick={() => onCompletedPressed(todo.id)}>
