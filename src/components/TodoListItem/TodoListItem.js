@@ -31,15 +31,14 @@ const Button = styled.button`
   border-radius: 8px;
   outline: none;
   cursor: pointer;
+  display: inline-block;
 `;
 
 const CompletedButton = styled(Button)`
-  display: inline-block;
   background-color: #22ee22;
 `;
 
 const RemoveButton = styled(Button)`
-  display: inline-block;
   background-color: #ee2222;
   margin-left: 8px;
 `;
