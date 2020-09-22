@@ -1,5 +1,5 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
-import { todos, isLoading } from './reducers';
+import { todos } from './reducers';
 
 // local storage
 import { persistReducer } from 'redux-persist';
@@ -11,7 +11,7 @@ import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 // state renders in Redux devtools
-const reducers = { todos, isLoading };
+const reducers = { todos };
 
 // put reducers in a form that we can pass to the createStore function
 const rootReducer = combineReducers(reducers);

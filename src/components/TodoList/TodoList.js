@@ -7,6 +7,7 @@ import NewTodoForm from '../NewTodoForm/NewTodoForm';
 import './TodoList.css';
 
 import { loadTodos, removeTodoRequest, markTodoRequest } from '../../thunks';
+import { getTodos, getTodosLoading } from '../../selectors';
 
 //  todos props show todo items
 
@@ -40,12 +41,15 @@ const TodoList = ({
 };
 
 const mapStateToProps = (state) => ({
-  todos: state.todos,
-  isLoading: state.isLoading,
+  // todos: state.todos,
+  // isLoading: state.isLoading,
+  // selectors
+  isLoading: getTodosLoading(state),
+  todos: getTodos(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  // THUNKS
+  // THUNKS instead of actions
   onCompletedPressed: (id) => dispatch(markTodoRequest(id)),
   startLoadingTodos: () => dispatch(loadTodos()),
   onRemovePressed: (id) => dispatch(removeTodoRequest(id)),
