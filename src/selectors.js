@@ -10,3 +10,7 @@ export const getIncompleteTodos = createSelector(getTodos, (todos) =>
 );
 
 // getIncompleteTodos(state)
+
+export const getCompletedTodos = createSelector(getTodos, (todos) =>
+  todos.filter((todo) => todo.isCompleted)
+);
