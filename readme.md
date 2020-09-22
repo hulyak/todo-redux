@@ -8,3 +8,28 @@
 Redux takes care of managing and modifying the state of the application for us, the purpose of selectors is to *abstract away the details of how our data is stored in this state*
 - Styled Components - management of appearance
   
+
+## Requirements
+
+- Node.js
+- github
+
+## Running The Project: 
+
+- Download / Clone this repository
+  
+```
+// cd into the todo folder and Install all dependencies 
+npm install
+
+// start the app
+npm start
+
+// start the backend
+
+cd server
+npm start 
+``` 
+
+Server is running on port 8080
+App runs on port 3000
