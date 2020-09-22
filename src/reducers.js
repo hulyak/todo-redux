@@ -50,7 +50,7 @@ export const todos = (state = initialState, action) => {
             return updatedTodo;
           }
           return todo;
-        });
+        })
       }
     }
     // load data from the server
