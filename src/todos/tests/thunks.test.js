@@ -3,7 +3,7 @@ import fetchMock from 'fetch-mock';
 import { expect } from 'chai';
 import sinon from 'sinon';
 
-import { loadTodos } from '../../thunks';
+import { loadTodos } from '../thunks';
 
 // fake async test with SINON
 // fake fetch test with node-fetch and fetch-mock
@@ -29,8 +29,10 @@ describe('The loadTodos Thunk', () => {
     };
 
     await loadTodos()(fakeDispatch);
+
     expect(fakeDispatch.getCall(0).args[0]).to.deep.equal(expectedFirstAction);
     expect(fakeDispatch.getCall(1).args[1]).to.deep.equal(expectedSecondAction);
+
     fetchMock.reset();
   });
 });
