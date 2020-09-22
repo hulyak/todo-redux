@@ -1,5 +1,5 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
-import { todos } from './reducers';
+import { todos } from './todos/reducers';
 
 // local storage
 import { persistReducer } from 'redux-persist';

@@ -2,16 +2,16 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 // import { markTodoAsCompleted } from '../../actions';
 
-import TodoListItem from '../TodoListItem/TodoListItem';
-import NewTodoForm from '../NewTodoForm/NewTodoForm';
+import TodoListItem from './TodoListItem';
+import NewTodoForm from './NewTodoForm';
 
-import { loadTodos, removeTodoRequest, markTodoRequest } from '../../thunks';
+import { loadTodos, removeTodoRequest, markTodoRequest } from './thunks';
 import {
   // getTodos,
   getTodosLoading,
   getCompletedTodos,
   getIncompleteTodos,
-} from '../../selectors';
+} from './selectors';
 import styled from 'styled-components';
 
 //  todos props show todo items

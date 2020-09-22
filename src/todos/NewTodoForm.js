@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 
 // import { createTodo } from '../../actions';
-import { addTodoRequest } from '../../thunks';
-import { getTodos } from '../../selectors';
+import { addTodoRequest } from './thunks';
+import { getTodos } from './selectors';
 import styled from 'styled-components';
 
 const FormContainer = styled.div`
