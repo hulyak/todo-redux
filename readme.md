@@ -1,4 +1,4 @@
-# Todo APP with Redux, Thunk, Reselect, Styled-Components, and Testing the Ecosystem
+# Todo APP with Redux, Redux-Thunk, Reselect, Styled-Components, and Testing the Ecosystem
 
 ## React Ecosystem
 
